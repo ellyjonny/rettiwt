@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rettiwt/global/global_widgets/feeds_widget.dart';
 
 
 class Homepage extends StatefulWidget {
@@ -12,7 +13,8 @@ class _HomepageState extends State {
   build(context) {
     return Scaffold(
         appBar: AppBar(
-          title:Image.asset('assets/Twitter_Logo_Blue.png', fit: BoxFit.cover,scale: 0.1,),
+          title:Image.asset('assets/images/Twitter_Logo_Blue.png', fit: BoxFit.cover,scale: 7.0),
+          centerTitle: true,
           backgroundColor: Color(0xFFCCCCCC),
           leading: GestureDetector(
             onTap: () {},
@@ -34,7 +36,7 @@ class _HomepageState extends State {
           ],
         ),
         body: Container(child: Column(
-          children: [Image(image: AssetImage('assets/man.JPG'))],
+          children: [FeedsWidget(feedcontent: '', firstname: '', imageurl: null, username: '',)],
         )));
   }
 }
