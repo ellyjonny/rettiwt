@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 class FeedsModel {
   final String username;
   final String firstname;
-  final String feedcontent;
-  final String imageurl;
+  final dynamic feedcontent;
+  final  imageurl;
 
   FeedsModel(
       {@required this.username,
