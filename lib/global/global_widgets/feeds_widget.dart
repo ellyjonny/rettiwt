@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FeedsWidget extends StatelessWidget {
   final String username;
@@ -15,9 +16,10 @@ class FeedsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: ProfileImage(),
+      leading: ProfileImage(imageurl: imageurl),
       title: NameSection(firstname: firstname, username: username),
       subtitle: FeedContentWidget(feedcontent: feedcontent),
+      onLongPress: () {},
     );
   }
 }
@@ -25,17 +27,17 @@ class FeedsWidget extends StatelessWidget {
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
     Key key,
-    // @required this.imageurl,
+    @required this.imageurl,
   }) : super(key: key);
 
-  // final imageurl;
+  final imageurl;
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       backgroundColor: Colors.blue,
       radius: 25.0,
-      // backgroundImage: imageurl,
+      backgroundImage: AssetImage('$imageurl'),
     );
   }
 }
@@ -50,7 +52,44 @@ class FeedContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$feedcontent', overflow: TextOverflow.fade);
+    return Column(
+      children: [
+        Container(alignment: Alignment.topLeft,
+          child: Text('$feedcontent', overflow: TextOverflow.fade,textAlign: TextAlign.start,)),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 64,
+        ),
+        Row(
+          children: [
+            Icon(
+              FontAwesomeIcons.comment,
+              size: 15,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 6,
+            ),
+            Icon(
+              FontAwesomeIcons.heart,
+              size: 15,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 6,
+            ),
+            Icon(
+              FontAwesomeIcons.random,
+              size: 15,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 6,
+            ),
+            Icon(
+              FontAwesomeIcons.share,
+              size: 15,
+            ),
+          ],
+        )
+      ],
+    );
   }
 }
 
